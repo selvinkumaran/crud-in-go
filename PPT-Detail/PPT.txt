@@ -1,0 +1,50 @@
+Go (also known as Golang)
+Developed by Google in 2007, publicly released in 2009
+Designed for simplicity, efficiency, and concurrency
+Open-source programming language
+
+Go is often referred to as Golang because of its former domain name, golang.org.
+But its proper name is Go. 
+
+Developed by Google in 2007, publicly released in 2009
+
+Developed by Three developers :
+                    * Robert Griesemer
+                    * Rob Pike
+                    * Ken Thompson
+                    
+Simplicity: Go was designed to be simple and straightforward, 
+with a clean syntax that reduces complexity and makes it easier for developers to read and write code. 
+
+Efficiency: Go aims to provide high performance and efficient execution of code. 
+
+Concurrency: Go provides built-in support for concurrent programming through goroutines and channels.
+
+Open Source: Go is an open-source language, meaning that its source code is freely available for anyone to view, modify, and distribute.
+
+Cross-Platform: Go is designed to be cross-platform, meaning that it can run on various operating systems, including Linux, macOS, Windows, and more. 
+
+Variables
+---------
+
+If an initializer is present, the type can be omitted; the variable will take the type of the initializer.
+
+Variables declared without an explicit initial value are given their zero value.
+
+The zero value is:
+
+0 for numeric types,
+false for the boolean type, and
+"" (the empty string) for strings
+
+When declaring a variable without specifying an explicit type (either by using the := syntax or var = expression syntax), the variable's type is inferred from the value on the right hand side.
+
+go vet:
+
+Purpose: go vet is a static analysis tool that detects suspicious constructs in Go code that could lead to bugs or other issues.
+Capabilities: It primarily focuses on detecting issues related to correctness, such as incorrect use of synchronization primitives, unused variables, unreachable code, and formatting errors in printf-style functions.
+
+golint:
+
+Purpose: golint is a linter for Go code that focuses on enforcing coding style and idiomatic Go practices.
+Capabilities: It analyzes code for adherence to the official Go style guide and flags violations such as naming conventions, code formatting, and other stylistic issues.        
