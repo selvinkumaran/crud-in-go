@@ -64,9 +64,7 @@ func main() {
 		fmt.Print("Choose an option: ")
 
 		optionStr, _ := reader.ReadString('\n')
-		fmt.Println(optionStr, "BEFORE selvin")
 		optionStr = strings.TrimSpace(optionStr)
-		fmt.Println(optionStr, "AFTER selvin")
 
 		switch optionStr {
 		case "1":
