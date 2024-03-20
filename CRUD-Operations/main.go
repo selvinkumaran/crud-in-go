@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"slices"
 	"strconv"
 
 	"github.com/gorilla/mux"
@@ -12,9 +13,9 @@ import (
 
 // Book struct represents a book
 type Book struct {
-	ID     int    `json:"id"`
-	Title  string `json:"title"`
-	Author string `json:"author"`
+	ID     int
+	Title  string
+	Author string
 }
 
 var books []Book
@@ -37,7 +38,7 @@ func main() {
 
 	// Start server
 	log.Fatal(http.ListenAndServe(":8080", router))
-	
+
 }
 
 // Get all books
@@ -56,7 +57,6 @@ func getBook(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 	}
-	json.NewEncoder(w).Encode(&Book{})
 }
 
 // Create a new book
@@ -66,7 +66,7 @@ func createBook(w http.ResponseWriter, r *http.Request) {
 	_ = json.NewDecoder(r.Body).Decode(&book)
 	book.ID = len(books) + 1
 	books = append(books, book)
-	json.NewEncoder(w).Encode(book)
+	json.NewEncoder(w).Encode(books)
 }
 
 // Update a book
@@ -90,11 +90,7 @@ func updateBook(w http.ResponseWriter, r *http.Request) {
 func deleteBook(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	params := mux.Vars(r)
-	for index, item := range books {
-		if strconv.Itoa(item.ID) == params["id"] {
-			books = append(books[:index], books[index+1:]...)
-			break
-		}
-	}
+	id, _ := strconv.Atoi(params["id"])
+	books = slices.Delete(books, id, id+1)
 	json.NewEncoder(w).Encode(books)
 }
